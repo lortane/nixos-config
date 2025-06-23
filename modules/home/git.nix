@@ -3,11 +3,11 @@
   programs.git = {
     enable = true;
     
-    userName = "Frost-Phoenix";
-    userEmail = "67cyril6767@gmail.com";
+    userName = "lortane";
+    userEmail = "lortane@pm.me";
     
     extraConfig = { 
-      init.defaultBranch = "main";
+      init.defaultBranch = "master";
       credential.helper = "store";
     };
   };
