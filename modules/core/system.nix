@@ -15,9 +15,7 @@
     };
   };
   nixpkgs = {
-    overlays = [
-      inputs.nur.overlay
-    ];
+    overlays = [ inputs.nur.overlays.default ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -27,7 +25,7 @@
 
   time.timeZone = "Europe/Madrid";
   nixpkgs.config.allowUnfree = true;
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.05";
   i18n = {
     defaultLocale = "es_ES.UTF-8";
     extraLocaleSettings.LC_MESSAGES = "en_US.UTF-8";

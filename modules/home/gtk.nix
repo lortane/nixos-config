@@ -1,11 +1,11 @@
 { pkgs, config, ... }:
 {
   fonts.fontconfig.enable = true;
-  home.packages = [
-    pkgs.nerdfonts
-    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" "Noto" ]; })
-    pkgs.twemoji-color-font
-    pkgs.noto-fonts-emoji
+    home.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.noto
+    twemoji-color-font
+    noto-fonts-emoji
   ];
 
   gtk = {
