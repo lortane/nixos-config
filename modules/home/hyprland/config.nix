@@ -2,7 +2,7 @@
 {
   wayland.windowManager.hyprland = {
     settings = {
-      
+
       # second monitor vertical
       monitor = [
         "HDMI-A-1,preferred,auto,1,transform,1"
@@ -28,7 +28,7 @@
         kb_layout = "es";
         kb_options ="grp:alt_caps_toggle"; 
         numlock_by_default = true;
-        follow_mouse = 1;
+        follow_mouse = 2;
         sensitivity = 0;
         touchpad = {
           natural_scroll = true;
