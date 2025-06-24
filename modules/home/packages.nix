@@ -21,8 +21,10 @@ in
     gtrash                            # rm replacement, put deleted files in system trash
     hexdump
     jdk17                             # java
+    keepassxc
     lazygit
     libreoffice
+    monero-gui
     nautilus     # file manager
     nitch                             # systhem fetch util
     nix-prefetch-github
@@ -32,6 +34,7 @@ in
     soundwireserver                   # pass audio to android phone
     tdf                               # cli pdf viewer
     todo                              # cli todo list
+    tor-browser
     toipe                             # typing test in the terminal
     valgrind                          # c memory analyzer
     yazi                              # terminal file manager
@@ -41,8 +44,9 @@ in
     wineWowPackages.wayland
 
     # C / C++
-    gcc
+    gcc15
     gnumake
+    xmake
 
     # Python
     python3
