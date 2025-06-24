@@ -92,6 +92,7 @@
         };
         scroll-step= 5;
         on-click= "pamixer -t";
+        on-click-right= "switch-audio-output";
     };
     battery = {
         format = "{icon} {capacity}%";

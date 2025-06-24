@@ -23,6 +23,8 @@
   ascii = pkgs.writeScriptBin "ascii" (builtins.readFile ./scripts/ascii.sh);
   
   record = pkgs.writeScriptBin "record" (builtins.readFile ./scripts/record.sh);
+
+  switch-audio-output = pkgs.writeShellScriptBin "switch-audio-output" (builtins.readFile ./scripts/switch-audio-output.sh);
 in {
   home.packages = with pkgs; [
     wall-change
@@ -49,5 +51,8 @@ in {
     ascii
 
     record
+
+    switch-audio-output
+
   ];
 }
