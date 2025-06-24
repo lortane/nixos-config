@@ -3,6 +3,11 @@
   wayland.windowManager.hyprland = {
     settings = {
       
+      # second monitor vertical
+      monitor = [
+        "HDMI-A-1,preferred,auto,1,transform,1"
+      ];
+      
       # autostart
       exec-once = [
         "systemctl --user import-environment &"
