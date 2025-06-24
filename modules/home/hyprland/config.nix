@@ -43,7 +43,6 @@
         border_size = 2;
         "col.active_border" = "rgb(cba6f7) rgb(94e2d5) 45deg";
         "col.inactive_border" = "0x00000000";
-        border_part_of_window = false;
         no_border_on_floating = false;
       };
 
@@ -58,7 +57,6 @@
       };
 
       dwindle = {
-        no_gaps_when_only = true;
         force_split = 0;
         special_scale_factor = 1.0;
         split_width_multiplier = 1.0;
@@ -70,7 +68,6 @@
       master = {
         new_status = "master";
         special_scale_factor = 1;
-        no_gaps_when_only = false;
       };
 
       decoration = {
@@ -81,25 +78,25 @@
 
         blur = {
           enabled = true;
-          size = 1;
-          passes = 1;
-          # size = 4;
-          # passes = 2;
+          size = 3;
+          passes = 2;
           brightness = 1;
-          contrast = 1.400;
+          contrast = 1.4;
           ignore_opacity = true;
           noise = 0;
           new_optimizations = true;
           xray = true;
         };
 
-        drop_shadow = true;
+        shadow = {
+          enabled = true;
 
-        shadow_ignore_window = true;
-        shadow_offset = "0 2";
-        shadow_range = 20;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(00000055)";
+          ignore_window = true;
+          offset = "0 2";
+          range = 20;
+          render_power = 3;
+          color = "rgba(00000055)";
+        };
       };
 
       animations = {
@@ -234,24 +231,24 @@
 
       # windowrule
       windowrule = [
-        "float,imv"
-        "center,imv"
-        "size 1200 725,imv"
-        "float,mpv"
-        "center,mpv"
-        "tile,Aseprite"
-        "size 1200 725,mpv"
+        "float,class:^(imv)$"
+        "center,class:^(imv)$"
+        "size 1200 725,class:^(imv)$"
+        "float,class:^(mpv)$"
+        "center,class:^(mpv)$"
+        "tile,class:^(Aseprite)$"
+        "size 1200 725,class:^(mpv)$"
         "float,title:^(float_kitty)$"
         "center,title:^(float_kitty)$"
         "size 950 600,title:^(float_kitty)$"
-        "float,audacious"
-        "workspace 8 silent, audacious"
+        "float,class:^(Audacious)$"
+        "workspace 8 silent, class:^(Audacious)$"
         # "pin,wofi"
         # "float,wofi"
         # "noborder,wofi"
-        "tile, neovide"
-        "idleinhibit focus,mpv"
-        "float,udiskie"
+        "tile, class:^(neovide)$"
+        "idleinhibit focus,class:^(mpv)$"
+        "float,class:^(udiskie)$"
         "float,title:^(Transmission)$"
         "float,title:^(Volume Control)$"
         "float,title:^(Firefox — Sharing Indicator)$"
