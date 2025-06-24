@@ -24,6 +24,13 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+  # mount "shared" drive
+  fileSystems."/mnt/shared" = {
+    device = "/dev/disk/by-uuid/24F08D1BF08CF478";
+    fsType = "ntfs";
+    options = [ "defaults" "nofail" "uid=1000" "gid=1000" ];
+  };
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
