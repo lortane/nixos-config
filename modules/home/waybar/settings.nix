@@ -1,7 +1,7 @@
 { ... }:
 {
   programs.waybar.settings.mainBar = {
-    position= "bottom";
+    position= "top";
     layer= "top";
     height= 5;
     margin-top= 0;
@@ -40,12 +40,10 @@
         format = "{icon}";
         on-click= "activate";
         format-icons= {
-            "1"= "󰈹";
-            "2"= "";
-            "3"= "󰘙";
+            "1"= "";
+            "2"= "󰈹";
+            "3"= "";
             "4"= "󰙯";
-            "5"= "";
-            "6"= "";
             urgent= "";
             default = "";
             sort-by-number= true;
@@ -55,7 +53,6 @@
             "2"= [];
             "3"= [];
             "4"= [];
-            "5"= [];
         };
     };
     memory= {
