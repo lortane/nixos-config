@@ -9,21 +9,22 @@ in
     audacity
     bitwise                           # cli tool for bit / hex manipulation
     cbonsai                           # terminal screensaver
+    electrum-ltc
+    electrum
     evince                            # gnome pdf viewer
     eza                               # ls replacement
     entr                              # perform action when file change
     fd                                # find replacement
     file                              # Show file information 
     fzf                               # fuzzy finder
-    gtt                               # google translate TUI
     gifsicle                          # gif utility
     gimp
     gtrash                            # rm replacement, put deleted files in system trash
     hexdump
-    jdk17                             # java
     keepassxc
-    lazygit
+    kdePackages.kleopatra
     libreoffice
+    monero-cli
     monero-gui
     nautilus     # file manager
     nitch                             # systhem fetch util
@@ -36,22 +37,14 @@ in
     todo                              # cli todo list
     tor-browser
     toipe                             # typing test in the terminal
-    valgrind                          # c memory analyzer
     yazi                              # terminal file manager
     yt-dlp-light
     zenity
     winetricks
     wineWowPackages.wayland
 
-    # C / C++
-    gcc15
-    gnumake
-    xmake
-
-    # Python
-    python3
-
     bleachbit                         # cache cleaner
+    brave
     cmatrix
     gparted                           # partition manager
     ffmpeg
@@ -70,6 +63,7 @@ in
     poweralertd
     qalculate-gtk                     # calculator
     unzip
+    uv
     wget
     xdg-utils
     xxd
