@@ -9,14 +9,15 @@
         bbenoist.nix
         # nix-shell suport 
         arrterian.nix-env-selector
-        # python
-        ms-python.python
-        # C/C++
-        ms-vscode.cpptools
 
-        # Color theme
+        # color theme
         catppuccin.catppuccin-vsc
         catppuccin.catppuccin-vsc-icons
+
+        # cpp development
+        ms-vscode.cpptools
+        eamodio.gitlens
+        llvm-vs-code-extensions.vscode-clangd
       ];
       userSettings = {
         "update.mode" = "none";
@@ -83,7 +84,7 @@
       # Keybindings
       keybindings = [
         {
-          key = "ctrl+[Semicolon]";
+          key = "ctrl+[Backslash]";
           command = "editor.action.commentLine";
           when = "editorTextFocus && !editorReadonly";
         }
