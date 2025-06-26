@@ -51,6 +51,8 @@ in
     imv                               # image viewer
     killall
     libnotify
+    lldb
+    llvmPackages.clang-tools
 	  man-pages					            	  # extra man pages
     mpv                               # video player
     ncdu                              # disk space
