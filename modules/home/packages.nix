@@ -8,11 +8,9 @@ in
     
     audacity
     bitwise                           # cli tool for bit / hex manipulation
-    cbonsai                           # terminal screensaver
     electrum-ltc
     electrum
     evince                            # gnome pdf viewer
-    eza                               # ls replacement
     entr                              # perform action when file change
     fd                                # find replacement
     file                              # Show file information 
@@ -29,14 +27,10 @@ in
     nautilus     # file manager
     nitch                             # systhem fetch util
     nix-prefetch-github
-    pipes                             # terminal screensaver
-    prismlauncher                     # minecraft launcher
     ripgrep                           # grep replacement
     soundwireserver                   # pass audio to android phone
     tdf                               # cli pdf viewer
-    todo                              # cli todo list
     tor-browser
-    toipe                             # typing test in the terminal
     yazi                              # terminal file manager
     yt-dlp-light
     zenity
@@ -55,6 +49,7 @@ in
     llvmPackages.clang-tools
 	  man-pages					            	  # extra man pages
     mpv                               # video player
+    nextcloud-client
     ncdu                              # disk space
     openssl
     pamixer                           # pulseaudio command line mixer
