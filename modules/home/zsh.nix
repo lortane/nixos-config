@@ -10,6 +10,24 @@
       plugins = [ "git" "fzf" ];
     };
     initContent = lib.mkBefore ''
+      # Function to change directory on exit from yazi
+      # We name it 'ycd' to avoid conflicts with the 'yazi' package name
+      function ycd() {
+        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+        # Launch yazi, passing all arguments to it, and telling it where to write the CWD file
+        yazi "$@" --cwd-file="$tmp"
+        # Read the CWD file back into a variable
+        local cwd="$(cat "$tmp")"
+        rm -f -- "$tmp"
+        # If the CWD file is not empty and not the same as the current directory, then CD
+        if [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+          cd -- "$cwd"
+        fi
+      }
+
+      # Create a short alias to call the function
+      alias y="ycd"
+      
       DISABLE_MAGIC_FUNCTIONS=true
       export "MICRO_TRUECOLOR=1"
     '';

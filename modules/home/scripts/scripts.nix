@@ -25,6 +25,10 @@
   record = pkgs.writeScriptBin "record" (builtins.readFile ./scripts/record.sh);
 
   switch-audio-output = pkgs.writeShellScriptBin "switch-audio-output" (builtins.readFile ./scripts/switch-audio-output.sh);
+  yazi-launcher = pkgs.writeShellScriptBin "yazi-launcher" ''
+    #!/bin/sh
+    kitty -e zsh -ic 'y; exit'
+  '';
 in {
   home.packages = with pkgs; [
     wall-change
@@ -53,6 +57,6 @@ in {
     record
 
     switch-audio-output
-
+    yazi-launcher
   ];
 }
