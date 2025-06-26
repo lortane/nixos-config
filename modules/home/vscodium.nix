@@ -56,6 +56,7 @@
 
         "editor.mouseWheelZoom" = true;
 
+        "C_Cpp.autocomplete" = "disabled";
         "C_Cpp.autocompleteAddParentheses" = true;
         "C_Cpp.formatting" = "clangFormat";
         "C_Cpp.vcFormat.newLine.closeBraceSameLine.emptyFunction" = true;
