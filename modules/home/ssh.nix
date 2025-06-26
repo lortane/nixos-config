@@ -7,6 +7,11 @@
   
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
+    matchBlocks = {
+      "github.com" = {
+        identitiesOnly = true;
+        identityFile = "~/.ssh/id_github"; 
+      };
+    };
   };
 }
