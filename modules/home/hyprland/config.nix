@@ -157,9 +157,13 @@
 
         # switch focus
         "$mainMod, left, movefocus, l"
+        "$mainMod, h, movefocus, l"
         "$mainMod, right, movefocus, r"
+        "$mainMod, l, movefocus, r"
         "$mainMod, up, movefocus, u"
+        "$mainMod, k, movefocus, u"
         "$mainMod, down, movefocus, d"
+        "$mainMod, j, movefocus, d"
 
         # switch workspace
         "$mainMod, KP_End, workspace, 1"
