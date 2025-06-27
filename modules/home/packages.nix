@@ -1,21 +1,14 @@
 { inputs, pkgs, ... }: 
-let 
-  _2048 = pkgs.callPackage ../../pkgs/2048/default.nix {}; 
-in
 {
   home.packages = (with pkgs; [
-    _2048
-    
+    alejandra  
     audacity
     bitwise                           # cli tool for bit / hex manipulation
     electrum-ltc
     electrum
-    evince                            # gnome pdf viewer
-    entr                              # perform action when file change
     fd                                # find replacement
     file                              # Show file information 
     fzf                               # fuzzy finder
-    gifsicle                          # gif utility
     gimp
     gtrash                            # rm replacement, put deleted files in system trash
     hexdump
@@ -26,21 +19,15 @@ in
     monero-gui
     nautilus     # file manager
     nitch                             # systhem fetch util
-    nix-prefetch-github
     ripgrep                           # grep replacement
     soundwireserver                   # pass audio to android phone
-    tdf                               # cli pdf viewer
     tor-browser
     yazi                              # terminal file manager
     yt-dlp-light
-    zenity
     winetricks
     wineWowPackages.wayland
 
-    bleachbit                         # cache cleaner
     brave
-    cmatrix
-    gparted                           # partition manager
     ffmpeg
     imv                               # image viewer
     killall
@@ -64,6 +51,5 @@ in
     wget
     xdg-utils
     xxd
-    inputs.alejandra.defaultPackage.${system}
   ]);
 }

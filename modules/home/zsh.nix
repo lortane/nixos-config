@@ -5,10 +5,6 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" "fzf" ];
-    };
     initContent = lib.mkBefore ''
       # Function to change directory on exit from yazi
       # We name it 'ycd' to avoid conflicts with the 'yazi' package name
@@ -39,13 +35,10 @@
       cd = "z";
       tt = "gtrash put";
       cat = "bat";
-      nano = "micro";
       code = "codium";
-      py = "python";
       icat = "kitten icat";
       dsize = "du -hs";
       findw = "grep -rl";
-      pdf = "tdf";
       open = "xdg-open";
 
       l = "eza --icons  -a --group-directories-first -1"; #EZA_ICON_SPACING=2
@@ -60,31 +53,12 @@
       nix-switchu = "sudo nixos-rebuild switch --upgrade --flake ~/nixos-config#${host}";
       nix-flake-update = "sudo nix flake update ~/nixos-config#";
       nix-clean = "sudo nix-collect-garbage && sudo nix-collect-garbage -d && sudo rm /nix/var/nix/gcroots/auto/* && nix-collect-garbage && nix-collect-garbage -d";
-
-      # Git
-      ga   = "git add";
-      gaa  = "git add --all";
-      gs   = "git status";
-      gb   = "git branch";
-      gm   = "git merge";
-      gpl  = "git pull";
-      gplo = "git pull origin";
-      gps  = "git push";
-      gpst = "git push --follow-tags";
-      gpso = "git push origin";
-      gc   = "git commit";
-      gcm  = "git commit -m";
-      gcma = "git add --all && git commit -m";
-      gtag = "git tag -ma";
-      gch  = "git checkout";
-      gchb = "git checkout -b";
-      gcoe = "git config user.email";
-      gcon = "git config user.name";
-
-      # python
-      piv = "python -m venv .venv";
-      psv = "source .venv/bin/activate";
     };
+  };
+  
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   programs.zoxide = {
