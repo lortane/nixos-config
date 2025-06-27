@@ -38,6 +38,8 @@
 
     spicetify-nix.url = "github:gerg-l/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    yazi-flavors.url = "github:aguirre-matteo/nix-yazi-flavors";
   };
 
   outputs = { nixpkgs, self, ...} @ inputs:

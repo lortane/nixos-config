@@ -789,7 +789,8 @@
         "nix-gaming": "nix-gaming",
         "nixpkgs": "nixpkgs_6",
         "nur": "nur",
-        "spicetify-nix": "spicetify-nix"
+        "spicetify-nix": "spicetify-nix",
+        "yazi-flavors": "yazi-flavors"
       }
     },
     "rust-analyzer-src": {
@@ -934,6 +935,21 @@
       "original": {
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
+        "type": "github"
+      }
+    },
+    "yazi-flavors": {
+      "locked": {
+        "lastModified": 1747095060,
+        "narHash": "sha256-2t2c/wFQrNJmwUCPqbyuWdNraYTYnGpQExwHnRh2h4I=",
+        "owner": "aguirre-matteo",
+        "repo": "nix-yazi-flavors",
+        "rev": "413d845000ca455906c61845d1bea5b975689436",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aguirre-matteo",
+        "repo": "nix-yazi-flavors",
         "type": "github"
       }
     }

@@ -15,7 +15,10 @@
     };
   };
   nixpkgs = {
-    overlays = [ inputs.nur.overlays.default ];
+    overlays = [
+      inputs.nur.overlays.default
+      inputs.yazi-flavors.overlay
+      ];
   };
 
   environment.systemPackages = with pkgs; [
