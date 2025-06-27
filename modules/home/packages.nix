@@ -35,10 +35,12 @@
     pavucontrol                       # pulseaudio volume controle (GUI)
     playerctl                         # controller for media players
     poweralertd
+    protonvpn-gui
     qalculate-gtk                     # calculator
     ripgrep                           # grep replacement
     soundwireserver                   # pass audio to android phone
     tor-browser
+    traceroute
     unzip
     uv
     wget
