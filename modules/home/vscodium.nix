@@ -15,7 +15,6 @@
         catppuccin.catppuccin-vsc-icons
 
         # cpp development
-        eamodio.gitlens
         llvm-vs-code-extensions.vscode-clangd
         vadimcn.vscode-lldb
       ];
