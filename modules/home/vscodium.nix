@@ -7,8 +7,6 @@
       extensions = with pkgs.vscode-extensions; [
         # nix language
         bbenoist.nix
-        # nix-shell suport 
-        arrterian.nix-env-selector
 
         # color theme
         catppuccin.catppuccin-vsc
