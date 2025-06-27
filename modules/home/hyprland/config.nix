@@ -56,6 +56,20 @@
         focus_on_activate = true;
       };
 
+      workspace = [
+        # Bind workspaces 1-10 to your primary monitor
+        "1, monitor:DP-3, persistent:true, default:true" # default:true makes it the default workspace for this monitor
+        "2, monitor:DP-3, persistent:true"
+        "3, monitor:DP-3, persistent:true"
+        "4, monitor:DP-3, persistent:true"
+
+        # Bind workspaces 11-20 to your secondary monitor (the vertical one)
+        "5, monitor:HDMI-A-1, persistent:true, default:true"
+        "6, monitor:HDMI-A-1, persistent:true"
+        "7, monitor:HDMI-A-1, persistent:true"
+        "8, monitor:HDMI-A-1, persistent:true"
+      ];
+
       dwindle = {
         force_split = 0;
         special_scale_factor = 1.0;
@@ -166,28 +180,16 @@
         "$mainMod, j, movefocus, d"
 
         # switch workspace
-        "$mainMod, KP_End, workspace, 1"
-        "$mainMod, KP_Down, workspace, 2"
-        "$mainMod, KP_Next, workspace, 3"
-        "$mainMod, KP_Left, workspace, 4"
-        "$mainMod, KP_Begin, workspace, 5"
-        "$mainMod, KP_Right, workspace, 6"
-        "$mainMod, KP_Home, workspace, 7"
-        "$mainMod, KP_Up, workspace, 8"
-        "$mainMod, KP_Prior, workspace, 9"
-        "$mainMod, KP_Insert, workspace, 10"
+        "$mainMod, KP_Insert, exec, hyprctl dispatch workspace 1 ; hyprctl dispatch workspace 5"
+        "$mainMod, KP_End, exec, hyprctl dispatch workspace 2 ; hyprctl dispatch workspace 6"
+        "$mainMod, KP_Down, exec, hyprctl dispatch workspace 3 ; hyprctl dispatch workspace 7"
+        "$mainMod, KP_Next, exec, hyprctl dispatch workspace 4 ; hyprctl dispatch workspace 8"
 
         # same as above, but switch to the workspace
-        "$mainMod SHIFT, KP_End, movetoworkspace, 1" # movetoworkspace
-        "$mainMod SHIFT, KP_Down, movetoworkspace, 2"
-        "$mainMod SHIFT, KP_Next, movetoworkspace, 3"
-        "$mainMod SHIFT, KP_Left, movetoworkspace, 4"
-        "$mainMod SHIFT, KP_Begin, movetoworkspace, 5"
-        "$mainMod SHIFT, KP_Right, movetoworkspace, 6"
-        "$mainMod SHIFT, KP_Home, movetoworkspace, 7"
-        "$mainMod SHIFT, KP_Up, movetoworkspace, 8"
-        "$mainMod SHIFT, KP_Prior, movetoworkspace, 9"
-        "$mainMod SHIFT, KP_Insert, movetoworkspace, 10"
+        "$mainMod SHIFT, KP_Insert, movetoworkspace, 1"
+        "$mainMod SHIFT, KP_End, movetoworkspace, 2" # movetoworkspace
+        "$mainMod SHIFT, KP_Down, movetoworkspace, 3"
+        "$mainMod SHIFT, KP_Next, movetoworkspace, 4"
 
         # window control
         "$mainMod SHIFT, left, movewindow, l"
