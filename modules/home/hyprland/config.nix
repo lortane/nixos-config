@@ -180,10 +180,10 @@
         "$mainMod, j, movefocus, d"
 
         # switch workspace
-        "$mainMod, KP_Insert, exec, hyprctl dispatch workspace 1 ; hyprctl dispatch workspace 5"
-        "$mainMod, KP_End, exec, hyprctl dispatch workspace 2 ; hyprctl dispatch workspace 6"
-        "$mainMod, KP_Down, exec, hyprctl dispatch workspace 3 ; hyprctl dispatch workspace 7"
-        "$mainMod, KP_Next, exec, hyprctl dispatch workspace 4 ; hyprctl dispatch workspace 8"
+        "$mainMod, KP_Insert, exec, hyprctl dispatch workspace 5 ; hyprctl dispatch workspace 1"
+        "$mainMod, KP_End, exec, hyprctl dispatch workspace 6 ; hyprctl dispatch workspace 2"
+        "$mainMod, KP_Down, exec, hyprctl dispatch workspace 7 ; hyprctl dispatch workspace 3"
+        "$mainMod, KP_Next, exec, hyprctl dispatch workspace 8 ; hyprctl dispatch workspace 4"
 
         # same as above, but switch to the workspace
         "$mainMod SHIFT, KP_Insert, movetoworkspace, 1"
