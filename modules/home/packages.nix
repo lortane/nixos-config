@@ -29,6 +29,7 @@
     nautilus                          # file manager
     ncdu                              # disk space
     nextcloud-client
+    nicotine-plus
     nitch                             # systhem fetch util
     openssl
     pamixer                           # pulseaudio command line mixer
@@ -39,6 +40,7 @@
     qalculate-gtk                     # calculator
     ripgrep                           # grep replacement
     soundwireserver                   # pass audio to android phone
+    sqlitebrowser
     tor-browser
     traceroute
     unzip

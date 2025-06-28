@@ -7,7 +7,7 @@
     firewall = {
       enable = true;
       checkReversePath = false;
-      allowedTCPPorts = [ 80 443 ];
+      allowedTCPPorts = [ 80 443 2234 ];
       allowedUDPPorts = [ 51820 ];
       # allowedUDPPortRanges = [
         # { from = 4000; to = 4007; }
