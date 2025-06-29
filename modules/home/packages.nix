@@ -15,6 +15,7 @@
     gtrash                            # rm replacement, put deleted files in system trash
     hexdump
     imv                               # image viewer
+    jq
     kdePackages.kleopatra
     keepassxc
     killall
