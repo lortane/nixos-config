@@ -170,6 +170,7 @@
         ",Print, exec, grimblast --notify --cursor --freeze copy area"
 
         # switch focus
+        "$mainMod, Tab, exec, fuzzel-switcher"
         "$mainMod, left, movefocus, l"
         "$mainMod, h, movefocus, l"
         "$mainMod, right, movefocus, r"

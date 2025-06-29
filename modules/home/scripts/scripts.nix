@@ -29,6 +29,8 @@
     #!/bin/sh
     kitty -e zsh -ic 'y; exit'
   '';
+  fuzzel-switcher = pkgs.writeScriptBin "fuzzel-switcher" (builtins.readFile ./scripts/fuzzel-switcher.sh);
+
 in {
   home.packages = with pkgs; [
     wall-change
@@ -58,5 +60,6 @@ in {
 
     switch-audio-output
     yazi-launcher
+    fuzzel-switcher
   ];
 }
