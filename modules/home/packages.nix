@@ -13,6 +13,7 @@
     fzf                               # fuzzy finder
     gimp
     gtrash                            # rm replacement, put deleted files in system trash
+    haskellPackages.tidal
     hexdump
     imv                               # image viewer
     jq
