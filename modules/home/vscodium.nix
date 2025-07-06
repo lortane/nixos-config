@@ -32,7 +32,7 @@
         "explorer.confirmDragAndDrop" = false;
         "editor.fontLigatures" = true;
         "editor.minimap.enabled" = false;
-        "workbench.startupEditor" = "none";
+        "workbench.startupEditor" = "welcomePage";
 
         "editor.formatOnSave" = true;
 

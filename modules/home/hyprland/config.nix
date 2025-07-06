@@ -165,6 +165,12 @@
         "$mainMod, C ,exec, hyprpicker -a"
         "$mainMod SHIFT, W, exec, vm-start"
 
+        # app launch
+        "$mainMod, 1, exec, brave"
+        "$mainMod, 2, exec, keepassxc"
+        "$mainMod, 3, exec, codium"
+        "$mainMod, 4, exec, spotify"
+
         # screenshot
         "$mainMod, Print, exec, grimblast --notify --cursor --freeze save area ~/Pictures/$(date +'%Y-%m-%d-At-%Ih%Mm%Ss').png"
         ",Print, exec, grimblast --notify --cursor --freeze copy area"
