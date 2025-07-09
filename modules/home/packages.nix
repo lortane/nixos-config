@@ -11,6 +11,7 @@
     ffmpeg
     file                              # Show file information 
     fzf                               # fuzzy finder
+    gemini-cli
     gimp
     gtrash                            # rm replacement, put deleted files in system trash
     haskellPackages.tidal
