@@ -11,7 +11,7 @@
     ++ [(import ./kitty.nix)]                     # terminal
     ++ [(import ./swaync/swaync.nix)]             # notification deamon
     ++ [(import ./micro.nix)]                     # nano replacement
-    ++ [(import ./nvim.nix)]                      # neovim editor
+    ++ [(import ./nvim)]                      # neovim editor
     ++ [(import ./packages.nix)]                  # other packages
     ++ [(import ./scripts/scripts.nix)]           # personal scripts
     ++ [(import ./spicetify.nix)]                 # spotify client
