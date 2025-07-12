@@ -5,6 +5,6 @@
     vimAlias = true;
     viAlias = true;
     defaultEditor = true;
-    extraLuaFile = ./init.lua;
+    extraLuaConfig = builtins.readFile ./init.lua;
   };
 }
