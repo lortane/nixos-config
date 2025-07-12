@@ -7,6 +7,7 @@
     cliphist                          # clipboard manager
     electrum
     electrum-ltc
+    eza
     fd                                # find replacement
     ffmpeg
     file                              # Show file information 
