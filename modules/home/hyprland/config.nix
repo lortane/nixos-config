@@ -272,6 +272,7 @@
 
       # windowrulev2
       windowrulev2 = [
+        "tile, class:(org.pulseaudio.pavucontrol)$"
         "tile, class:(edskedule)$"
         "tile, class:(Vital)$"
         "float, title:^(Picture-in-Picture)$"
