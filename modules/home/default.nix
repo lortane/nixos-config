@@ -5,6 +5,7 @@
     ++ [(import ./btop.nix)]                      # resouces monitor 
     ++ [(import ./discord.nix)]                   # discord with catppuccin theme
     ++ [(import ./fuzzel.nix)]                    # launcher
+    ++ [(import ./ghostty.nix)]                       # version control
     ++ [(import ./git.nix)]                       # version control
     ++ [(import ./gtk.nix)]                       # gtk theme
     ++ [(import ./hyprland)]                      # window manager
