@@ -1,88 +1,72 @@
 {
-  inputs,
   pkgs,
-  host,
+  host, # This is needed for the font size logic
   ...
 }:
-let
-  ghostty = inputs.ghostty.packages.${pkgs.system}.default;
-in
 {
-  home.packages = [ ghostty ];
+  # 1. Install Ghostty
+  home.packages = [ pkgs.ghostty ];
 
+  # 2. Main Ghostty Configuration
   xdg.configFile."ghostty/config".text = ''
-    # Font
-    font-family = "Maple Mono"
-    font-family = "DejaVu Sans"
-    font-size = ${if (host == "laptop") then "16" else "17"}
-    font-feature = calt
-    font-feature = ss03
+    # Font (from kitty.font)
+    font-family = "JetBrainsMono Nerd Font"
+    font-size = 13
 
-    bold-is-bright = false
-    selection-invert-fg-bg = true
+    # Theme (from kitty.themeFile)
+    theme = "Catppuccin-Mocha"
 
-    # Theme
-    theme = "gruvbox"
-    background-opacity = 0.66
+    # Opacity (from kitty.settings.background_opacity)
+    background-opacity = 0.55
 
-    cursor-style = bar
-    cursor-style-blink = false
-    adjust-cursor-thickness = 1
+    # Padding (from kitty.settings.window_padding_width)
+    window-padding-x = 10
+    window-padding-y = 10
 
-    resize-overlay = never
-    copy-on-select = false
-    confirm-close-surface = false
-    mouse-hide-while-typing = true
+    # Other settings mapped from Kitty
+    confirm-close-surface = false        
+    mouse-hide-while-typing = true     
 
-    window-theme = ghostty
-    # window-padding-x = 4
-    # window-padding-y = 6
-    window-padding-balance = true
-    window-padding-color = background
-    window-inherit-working-directory = true
-    window-inherit-font-size = true
+    # Other useful settings you had before
     window-decoration = false
-
-    gtk-titlebar = false
-    gtk-single-instance = false
-    gtk-tabs-location = bottom
-    gtk-wide-tabs = false
-
-    auto-update = off
-    term = ghostty
-    clipboard-paste-protection = false
-
-    keybind = shift+end=unbind
-    keybind = shift+home=unbind
-    keybind = ctrl+shift+left=unbind
-    keybind = ctrl+shift+right=unbind
-    keybind = shift+enter=text:\n
+    term = "ghostty"
+    
+    # Keybindings (from kitty.keybindings)
+    keybind = ctrl+shift+left=unbind   
+    keybind = ctrl+shift+right=unbind  
   '';
-  xdg.configFile."ghostty/themes/gruvbox".text = ''
-    background = #1d2021
-    foreground = #fbf1c7
 
-    palette = 0=#32302f
-    palette = 1=#cc241d
-    palette = 2=#98971a
-    palette = 3=#d79921
-    palette = 4=#458588
-    palette = 5=#b16286
-    palette = 6=#689d6a
-    palette = 7=#ebdbb2
+  # 3. Catppuccin Mocha Theme File
+  xdg.configFile."ghostty/themes/Catppuccin-Mocha".text = ''
+    # Catppuccin Mocha theme for Ghostty
+    # Created: 2025-07-19
+    
+    background = #1E1E2E
+    foreground = #CDD6F4
 
-    palette = 8=#928374
-    palette = 9=#fb4934
-    palette = 10=#b8bb26
-    palette = 11=#fabd2f
-    palette = 12=#83a598
-    palette = 13=#d3869b
-    palette = 14=#8ec07c
-    palette = 15=#fbf1c7
+    cursor-color = #CBA6F7
+    
+    selection-background = #585B70
+    selection-foreground = #1E1E2E
 
-    cursor-color = #D5C4A1
+    # Normal colors
+    palette = 0=#45475A  
+    palette = 1=#F38BA8  
+    palette = 2=#A6E3A1  
+    palette = 3=#F9E2AF  
+    palette = 4=#89B4FA  
+    palette = 5=#F5C2E7 
+    palette = 6=#94E2D5  
+    palette = 7=#BAC2DE 
 
-    selection-foreground = #282828
-    selection-background = #98971A
+    # Bright colors
+    palette = 8=#585B70   
+    palette = 9=#F38BA8   
+    palette = 10=#A6E3A1  
+    palette = 11=#F9E2AF  
+    palette = 12=#89B4FA  
+    palette = 13=#F5C2E7  
+    palette = 14=#94E2D5  
+    palette = 15=#A6ADC8  
   '';
 }
