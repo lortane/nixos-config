@@ -1,6 +1,8 @@
 { inputs, pkgs, ... }:
 {
   programs.hyprland.enable = true;
+  services.dbus.enable = true;
+  xdg.mime.enable = true;
   xdg.portal = {
     enable = true;
     wlr.enable = true;
