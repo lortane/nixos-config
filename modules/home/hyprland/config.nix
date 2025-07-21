@@ -146,9 +146,8 @@
         "$mainMod, F1, exec, show-keybinds"
 
         # keybindings
-        "$mainMod, Return, exec, kitty"
-        "ALT, Return, exec, kitty --title float_kitty"
-        "$mainMod SHIFT, Return, exec, kitty --start-as=fullscreen -o 'font_size=16'"
+        "$mainMod, Return, exec, ghostty"
+        "$mainMod SHIFT, Return, exec, ghostty --start-as=fullscreen -o 'font_size=16'"
         "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] floorp'"
         "$mainMod, W, killactive,"
         "$mainMod, F, fullscreen, 0"
@@ -251,9 +250,6 @@
         "float,class:^(mpv)$"
         "center,class:^(mpv)$"
         "size 1200 725,class:^(mpv)$"
-        "float,title:^(float_kitty)$"
-        "center,title:^(float_kitty)$"
-        "size 950 600,title:^(float_kitty)$"
         "float,class:^(Audacious)$"
         "workspace 8 silent, class:^(Audacious)$"
         # "pin,wofi"

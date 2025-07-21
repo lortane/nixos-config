@@ -27,7 +27,7 @@
   switch-audio-output = pkgs.writeShellScriptBin "switch-audio-output" (builtins.readFile ./scripts/switch-audio-output.sh);
   yazi-launcher = pkgs.writeShellScriptBin "yazi-launcher" ''
     #!/bin/sh
-    kitty -e zsh -ic 'y; exit'
+    ghostty -e zsh -ic 'y; exit'
   '';
   fuzzel-switcher = pkgs.writeScriptBin "fuzzel-switcher" (builtins.readFile ./scripts/fuzzel-switcher.sh);
 

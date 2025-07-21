@@ -9,7 +9,7 @@
     ++ [(import ./git.nix)]                       # version control
     ++ [(import ./gtk.nix)]                       # gtk theme
     ++ [(import ./hyprland)]                      # window manager
-    ++ [(import ./kitty.nix)]                     # terminal
+    # ++ [(import ./kitty.nix)]                     # terminal
     ++ [(import ./swaync/swaync.nix)]             # notification deamon
     ++ [(import ./micro.nix)]                     # nano replacement
     ++ [(import ./nvim)]                      # neovim editor

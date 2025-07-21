@@ -9,31 +9,27 @@
 
   # 2. Main Ghostty Configuration
   xdg.configFile."ghostty/config".text = ''
-    # Font (from kitty.font)
+    # Font
     font-family = "JetBrainsMono Nerd Font"
     font-size = 13
 
-    # Theme (from kitty.themeFile)
+    # Theme
     theme = "Catppuccin-Mocha"
 
-    # Opacity (from kitty.settings.background_opacity)
+    # Opacity 
     background-opacity = 0.55
 
-    # Padding (from kitty.settings.window_padding_width)
+    # Padding 
     window-padding-x = 10
     window-padding-y = 10
 
-    # Other settings mapped from Kitty
+    # Other settings
     confirm-close-surface = false        
     mouse-hide-while-typing = true     
 
     # Other useful settings you had before
     window-decoration = false
     term = "ghostty"
-    
-    # Keybindings (from kitty.keybindings)
-    keybind = ctrl+shift+left=unbind   
-    keybind = ctrl+shift+right=unbind  
   '';
 
   # 3. Catppuccin Mocha Theme File
