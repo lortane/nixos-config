@@ -2,6 +2,7 @@
 {
   home.packages = (with pkgs; [
     audacity
+    bitwig-studio
     bitwise                           # cli tool for bit / hex manipulation
     brave
     cliphist                          # clipboard manager
@@ -54,8 +55,17 @@
     xxd
     yazi                              # terminal file manager
     yt-dlp-light
+    vital
     winetricks
     wineWowPackages.wayland
     wl-clipboard                      # clipboard utils for wayland (wl-copy, wl-paste)
   ]);
+  
+  xdg.desktopEntries."vital" = {
+    name = "Vital"; # This is the name that will appear in fuzzel
+    comment = "Spectral warping wavetable synthesizer"; # A short description
+    exec = "${pkgs.vital}/bin/Vital"; # The full path to the executable
+    icon = "vital"; # Optional, but good practice if an icon is available
+    categories = [ "AudioVideo" "Audio" "Music" ]; # Standard categories for sorting
+  };
 }
