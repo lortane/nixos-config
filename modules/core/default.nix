@@ -1,18 +1,19 @@
-{ inputs, nixpkgs, self, username, host, ...}:
+{ lib, host, ... }:
 {
-  imports =
-       [ (import ./bootloader.nix) ]
-    ++ [ (import ./hardware.nix) ]
-    ++ [ (import ./xserver.nix) ]
-    ++ [ (import ./musnix.nix) ]
-    ++ [ (import ./network.nix) ]
-    ++ [ (import ./pipewire.nix) ]
-    ++ [ (import ./program.nix) ]
-    ++ [ (import ./security.nix) ]
-    ++ [ (import ./services.nix) ]
-    ++ [ (import ./steam.nix) ]
-    ++ [ (import ./system.nix) ]
-    ++ [ (import ./user.nix) ]
-    ++ [ (import ./wayland.nix) ]
-    ++ [ (import ./virtualization.nix) ];
+  imports = [
+    ./bootloader.nix
+    ./hardware.nix
+    ./musnix.nix
+    ./network.nix
+    ./pipewire.nix
+    ./program.nix
+    ./security.nix
+    ./services.nix
+    ./steam.nix
+    ./system.nix
+    ./user.nix
+    ./virtualization.nix
+    ./wayland.nix
+    ./xserver.nix
+  ];
 }
