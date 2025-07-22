@@ -1,134 +1,176 @@
 #!/usr/bin/env bash
 
-init() {
-    # Vars
-    CURRENT_USERNAME='frostphoenix'
+#
+# Improved NixOS Flake Installation Script
+#
+# This script guides a user through setting up a new NixOS configuration
+# from this flake, personalizing it with their username and host type.
+#
 
-    # Colors
-    NORMAL=$(tput sgr0)
-    WHITE=$(tput setaf 7)
-    BLACK=$(tput setaf 0)
-    RED=$(tput setaf 1)
-    GREEN=$(tput setaf 2)
-    YELLOW=$(tput setaf 3)
-    BLUE=$(tput setaf 4)
-    MAGENTA=$(tput setaf 5)
-    CYAN=$(tput setaf 6)
-    BRIGHT=$(tput bold)
-    UNDERLINE=$(tput smul)
+# --- Configuration ---
+# The placeholder username that exists in the template files.
+# This string will be replaced with the user's actual username.
+# IMPORTANT: If you change this, you must also change it in the template files.
+readonly PLACEHOLDER_USERNAME="__USERNAME__"
+
+# --- Script Setup ---
+# Exit immediately if a command exits with a non-zero status.
+set -e
+
+# --- Formatting and Colors ---
+# Use printf for better portability and to avoid issues with 'echo -e'.
+# Colors are disabled if the terminal is not interactive.
+if [ -t 1 ]; then
+  readonly T_BOLD=$(tput bold)
+  readonly T_UNDERLINE=$(tput smul)
+  readonly T_RED=$(tput setaf 1)
+  readonly T_GREEN=$(tput setaf 2)
+  readonly T_YELLOW=$(tput setaf 3)
+  readonly T_BLUE=$(tput setaf 4)
+  readonly T_MAGENTA=$(tput setaf 5)
+  readonly T_CYAN=$(tput setaf 6)
+  readonly T_NORMAL=$(tput sgr0)
+else
+  readonly T_BOLD=""
+  readonly T_UNDERLINE=""
+  readonly T_RED=""
+  readonly T_GREEN=""
+  readonly T_YELLOW=""
+  readonly T_BLUE=""
+  readonly T_MAGENTA=""
+  readonly T_CYAN=""
+  readonly T_NORMAL=""
+fi
+
+# --- Helper Functions ---
+
+# Prints a formatted header for a section.
+# Usage: print_section "Setting up User"
+print_section() {
+  # The final \n\n adds a blank line after the header for spacing.
+  printf "\n%s\n\n" "${T_BLUE}===${T_NORMAL} ${T_BOLD}$1${T_NORMAL} ${T_BLUE}===${T_NORMAL}"
 }
 
+# Prints an error message and exits.
+# Usage: die "Failed to copy hardware config."
+die() {
+  printf "\n%sError: %s%s\n" "${T_RED}" "$1" "${T_NORMAL}" >&2
+  exit 1
+}
+
+# Prompts the user for a yes/no confirmation.
+# Exits if the user does not answer 'y' or 'Y'.
+# Usage: confirm "Continue with installation?"
 confirm() {
-    echo -en "[${GREEN}y${NORMAL}/${RED}n${NORMAL}]: "
-    read -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]
-    then
-        exit 0
-    fi
+  printf "%s" "$1 [${T_GREEN}y${T_NORMAL}/${T_RED}n${T_NORMAL}]: "
+  read -n 1 -r REPLY
+  printf "\n"
+  if [[ ! "$REPLY" =~ ^[Yy]$ ]]; then
+    printf "Installation cancelled by user.\n"
+    exit 0
+  fi
 }
+
+# --- Main Functions ---
 
 print_header() {
-    echo -E "$CYAN
-      _____              _   ____  _                      _        
-     |  ___| __ ___  ___| |_|  _ \| |__   ___   ___ _ __ (_)_  __  
-     | |_ | '__/ _ \/ __| __| |_) | '_ \ / _ \ / _ \ '_ \| \ \/ /  
-     |  _|| | | (_) \__ \ |_|  __/| | | | (_) |  __/ | | | |>  <   
-     |_|  |_|  \___/|___/\__|_|   |_| |_|\___/ \___|_| |_|_/_/\_\  
-     _   _ _       ___        ___           _        _ _           
-    | \ | (_)_  __/ _ \ ___  |_ _|_ __  ___| |_ __ _| | | ___ _ __ 
-    |  \| | \ \/ / | | / __|  | || '_ \/ __| __/ _' | | |/ _ \ '__|
-    | |\  | |>  <| |_| \__ \  | || | | \__ \ || (_| | | |  __/ |   
-    |_| \_|_/_/\_\\\\___/|___/ |___|_| |_|___/\__\__,_|_|_|\___|_| 
+  printf "%sNixOS Flake Installer%s\n\n" "${T_BOLD}" "${T_NORMAL}"
+  printf "%sWarning: This script will modify system configuration files.%s\n" "${T_YELLOW}" "${T_NORMAL}"
+  printf "         Ensure you have backups if necessary.\n"
+}
 
-
-                  $BLUE https://github.com/Frost-Phoenix $RED 
-      ! To make sure everything runs correctly DONT run as root ! $GREEN
-                        -> '"./install.sh"' $NORMAL
-
-    "
+check_root() {
+  if [ "$EUID" -eq 0 ]; then
+    die "This script should not be run as root. The 'nixos-rebuild' command will ask for sudo password when needed."
+  fi
 }
 
 get_username() {
-    echo -en "Enter your$GREEN username$NORMAL : $YELLOW"
-    read username
-    echo -en "$NORMAL"
-    echo -en "Use$YELLOW "$username"$NORMAL as ${GREEN}username${NORMAL} ? "
-    confirm
-}
-
-set_username() {
-    sed -i -e "s/${CURRENT_USERNAME}/${username}/g" ./flake.nix
-    sed -i -e "s/${CURRENT_USERNAME}/${username}/g" ./modules/home/audacious/config
+  local username_input
+  print_section "Username Configuration"
+  while true; do
+    read -rp "Enter your desired username: " username_input
+    if [[ -z "$username_input" ]]; then
+      printf "%sUsername cannot be empty. Please try again.%s\n" "${T_RED}" "${T_NORMAL}"
+    else
+      # Username is valid (not empty), set it and exit the loop.
+      USERNAME="$username_input"
+      printf "Username set to: %s%s%s\n" "${T_YELLOW}" "${USERNAME}" "${T_NORMAL}"
+      break
+    fi
+  done
 }
 
 get_host() {
-    echo -en "Choose a ${GREEN}host${NORMAL} - [${YELLOW}D${NORMAL}]esktop, [${YELLOW}L${NORMAL}]aptop or [${YELLOW}V${NORMAL}]irtual machine: "
-    read -n 1 -r
-    echo
+  print_section "Host Configuration"
+  printf "Choose a host type:\n"
+  printf "  [${T_YELLOW}D${T_NORMAL}]esktop\n"
+  printf "  [${T_YELLOW}L${T_NORMAL}]aptop\n"
+  printf "  [${T_YELLOW}V${T_NORMAL}]irtual Machine\n\n"
 
-    if [[ $REPLY =~ ^[Dd]$ ]]; then
-        HOST='desktop'
-    elif [[ $REPLY =~ ^[Ll]$ ]]; then
-        HOST='laptop'
-     elif [[ $REPLY =~ ^[Vv]$ ]]; then
-        HOST='vm'
-    else
-        echo "Invalid choice. Please select 'D' for desktop, 'L' for laptop or 'V' for virtual machine."
-        exit 1
-    fi
-    
-    echo -en "$NORMAL"
-    echo -en "Use the$YELLOW "$HOST"$NORMAL ${GREEN}host${NORMAL} ? "
-    confirm
+  local host_choice
+  while true; do
+    read -n 1 -rp "Enter your choice: " host_choice
+    printf "\n"
+    case "$host_choice" in
+      [Dd]) HOST="desktop"; break ;;
+      [Ll]) HOST="laptop";  break ;;
+      [Vv]) HOST="vm";      break ;;
+      *) printf "%sInvalid choice. Please try again.%s\n" "${T_RED}" "${T_NORMAL}" ;;
+    esac
+  done
+  printf "Host type set to: %s%s%s\n" "${T_YELLOW}" "${HOST}" "${T_NORMAL}"
 }
 
-install() {
-    echo -e "\n${RED}START INSTALL PHASE${NORMAL}\n"
-    sleep 0.2
+apply_configuration() {
+  print_section "Applying Configuration"
 
-    # Create basic directories
-    echo -e "Creating folders:"
-    echo -e "    - ${MAGENTA}~/Music${NORMAL}"
-    echo -e "    - ${MAGENTA}~/Documents${NORMAL}"
-    echo -e "    - ${MAGENTA}~/Pictures/wallpapers/others${NORMAL}"
-    mkdir -p ~/Music
-    mkdir -p ~/Documents
-    mkdir -p ~/Pictures/wallpapers/others
-    sleep 0.2
+  printf " > Replacing placeholder '%s' with '%s' in configuration files...\n" "${T_YELLOW}${PLACEHOLDER_USERNAME}${T_NORMAL}" "${T_YELLOW}${USERNAME}${T_NORMAL}"
+  # Use find and sed to replace the placeholder in all .nix files.
+  # This is more robust than targeting specific files.
+  find . -type f -name "*.nix" -exec sed -i "s/${PLACEHOLDER_USERNAME}/${USERNAME}/g" {} +
+  printf " > Replacement complete.\n\n"
 
-    # Copy the wallpapers
-    echo -e "Copying all ${MAGENTA}wallpapers${NORMAL}"
-    cp -r wallpapers/wallpaper.png ~/Pictures/wallpapers
-    cp -r wallpapers/otherWallpaper/catppuccin/* ~/Pictures/wallpapers/others/
-    cp -r wallpapers/otherWallpaper/nixos/* ~/Pictures/wallpapers/others/
-    cp -r wallpapers/otherWallpaper/others/* ~/Pictures/wallpapers/others/
-    sleep 0.2
+  printf " > Setting up user directories...\n"
+  mkdir -p "$HOME/Documents"
+  mkdir -p "$HOME/Pictures/wallpapers"
+  printf " > Done.\n\n"
 
-    # Get the hardware configuration
-    echo -e "Copying ${MAGENTA}/etc/nixos/hardware-configuration.nix${NORMAL} to ${MAGENTA}./hosts/${HOST}/${NORMAL}\n"
-    cp /etc/nixos/hardware-configuration.nix hosts/${HOST}/hardware-configuration.nix
-    sleep 0.2
+  printf " > Copying wallpaper assets...\n"
+  cp -r wallpapers/* "$HOME/Pictures/wallpapers/"
+  printf " > Done.\n\n"
 
-    # Last Confirmation
-    echo -en "You are about to start the system build, do you want to process ? "
-    confirm
-
-    # Build the system (flakes + home manager)
-    echo -e "\nBuilding the system...\n"
-    sudo nixos-rebuild switch --flake .#${HOST}
+  local hardware_config_path="hosts/${HOST}/hardware-configuration.nix"
+  printf " > Copying hardware configuration to '%s'...\n" "${T_MAGENTA}${hardware_config_path}${T_NORMAL}"
+  if [ -f "/etc/nixos/hardware-configuration.nix" ]; then
+    cp "/etc/nixos/hardware-configuration.nix" "$hardware_config_path"
+    printf " > Done.\n"
+  else
+    die "Could not find '/etc/nixos/hardware-configuration.nix'. Please generate it first."
+  fi
 }
 
+build_system() {
+  print_section "System Build"
+  confirm "Ready to build the system for host '${T_YELLOW}${HOST}${T_NORMAL}'. This will take some time. Proceed?"
+
+  printf "\n%sExecuting: sudo nixos-rebuild switch --flake .#%s%s\n\n" "${T_CYAN}" "${HOST}" "${T_NORMAL}"
+  if sudo nixos-rebuild switch --flake ".#${HOST}"; then
+    printf "\n%sSystem build successful! Welcome to your new NixOS setup.%s\n" "${T_GREEN}${T_BOLD}" "${T_NORMAL}"
+  else
+    die "NixOS rebuild failed. Please check the errors above."
+  fi
+}
+
+# --- Main Execution ---
 main() {
-    init
-
-    print_header
-
-    get_username
-    set_username
-    get_host
-
-    install
+  check_root
+  print_header
+  get_username
+  get_host
+  apply_configuration
+  build_system
 }
 
-main && exit 0
+# Run the main function and exit with its status code.
+main
