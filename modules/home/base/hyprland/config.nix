@@ -2,11 +2,6 @@
 {
   wayland.windowManager.hyprland = {
     settings = {
-
-      # second monitor vertical
-      monitor = [
-        "HDMI-A-1,preferred,auto,1,transform,1"
-      ];
       
       # autostart
       exec-once = [
@@ -55,20 +50,6 @@
         enable_swallow = true;
         focus_on_activate = true;
       };
-
-      workspace = [
-        # Bind workspaces 1-10 to your primary monitor
-        "1, monitor:DP-3, persistent:true, default:true" # default:true makes it the default workspace for this monitor
-        "2, monitor:DP-3, persistent:true"
-        "3, monitor:DP-3, persistent:true"
-        "4, monitor:DP-3, persistent:true"
-
-        # Bind workspaces 11-20 to your secondary monitor (the vertical one)
-        "5, monitor:HDMI-A-1, persistent:true, default:true"
-        "6, monitor:HDMI-A-1, persistent:true"
-        "7, monitor:HDMI-A-1, persistent:true"
-        "8, monitor:HDMI-A-1, persistent:true"
-      ];
 
       dwindle = {
         force_split = 0;
