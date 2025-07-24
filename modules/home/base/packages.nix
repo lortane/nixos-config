@@ -10,6 +10,8 @@
     ffmpeg
     file                              # Show file information 
     fzf                               # fuzzy finder
+    gcc
+    gdb
     gemini-cli
     gimp
     gtrash                            # rm replacement, put deleted files in system trash
@@ -21,6 +23,7 @@
     killall
     libnotify
     libreoffice
+    librewolf
     lldb
     llvmPackages.clang-tools
 	  man-pages					            	  # extra man pages
