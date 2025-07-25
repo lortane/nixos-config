@@ -3,7 +3,6 @@
   home.packages = (with pkgs; [
     bitwig-studio
     bitwise                           # cli tool for bit / hex manipulation
-    brave
     cliphist                          # clipboard manager
     eza
     fd                                # find replacement

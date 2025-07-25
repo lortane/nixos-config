@@ -146,7 +146,7 @@
         "$mainMod SHIFT, W, exec, vm-start"
 
         # app launch
-        "$mainMod, 1, exec, brave"
+        "$mainMod, 1, exec, librewolf"
         "$mainMod, 2, exec, keepassxc"
         "$mainMod, 3, exec, codium"
         "$mainMod, 4, exec, spotify"
