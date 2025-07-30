@@ -3,5 +3,6 @@
   imports = [
     ./packages.nix
     ./hyprland.nix
+    ./waybar.nix
   ];
 }

@@ -3,7 +3,6 @@
   programs.waybar.settings.mainBar = {
     position= "top";
     layer= "top";
-    output= "DP-3";
     height= 5;
     margin-top= 0;
     margin-bottom= 0;
