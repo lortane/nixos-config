@@ -3,9 +3,7 @@
   programs.yazi = {
     enable = true;
     flavors = {
-      inherit (pkgs.yazi-flavors)
-        catppuccin-mocha
-        ;
+      inherit (pkgs.yazi-flavors) catppuccin-mocha;        
     };
 
     theme.flavor = {

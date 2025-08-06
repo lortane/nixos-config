@@ -1,4 +1,6 @@
 { inputs, ... }: 
 {
-  imports = [ (import ./nvim.nix) ];
+  imports = [
+    ./nvim.nix
+  ];
 }
