@@ -12,6 +12,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    jack.enable = true;
     extraConfig.pipewire."context.properties" = {
       default.clock.rate = 48000;
     default.clock.quantum = 256;
@@ -21,5 +22,6 @@
   };
   environment.systemPackages = with pkgs; [
     pavucontrol
+    alsa-utils
   ];
 }

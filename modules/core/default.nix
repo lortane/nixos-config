@@ -1,11 +1,10 @@
 { lib, host, ... }:
 {
   imports = [
+    ./audio.nix
     ./bootloader.nix
     ./hardware.nix
-    ./musnix.nix
     ./network.nix
-    ./pipewire.nix
     ./program.nix
     ./security.nix
     ./services.nix
