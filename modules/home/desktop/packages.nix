@@ -6,6 +6,7 @@
     electrum-ltc
     monero-cli
     monero-gui
+    reaper
     vital                 
   ]);
   

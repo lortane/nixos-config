@@ -1,7 +1,6 @@
 { inputs, pkgs, ... }: 
 {
   home.packages = (with pkgs; [
-    bitwig-studio
     bitwise                           # cli tool for bit / hex manipulation
     cliphist                          # clipboard manager
     eza
