@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 {
   fonts.fontconfig.enable = true;
-    home.packages = with pkgs; [
+  home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     nerd-fonts.noto
     twemoji-color-font
@@ -31,7 +31,7 @@
       size = 22;
     };
   };
-  
+
   home.pointerCursor = {
     name = "Nordzy-cursors";
     package = pkgs.nordzy-cursor-theme;

@@ -8,7 +8,7 @@
         line-height = 25;
         fields = "name,generic,comment,categories,filename,keywords";
         terminal = "ghostty";
-        prompt = "' ➜  '" ;
+        prompt = "' ➜  '";
         icon-theme = "Papirus-Dark";
         layer = "top";
         lines = 10;

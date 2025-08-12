@@ -1,11 +1,20 @@
-{ self, pkgs, lib, inputs, ...}: 
+{
+  self,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
   # imports = [ inputs.nix-gaming.nixosModules.default ];
   nix = {
     settings = {
       auto-optimise-store = true;
       download-buffer-size = 4194304;
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       substituters = [ "https://nix-gaming.cachix.org" ];
       trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" ];
     };
@@ -19,12 +28,16 @@
     overlays = [
       inputs.nur.overlays.default
       inputs.yazi-flavors.overlay
-      ];
+      (final: prev: {
+        vital = prev.callPackage inputs.vital-pkg { };
+      })
+    ];
   };
 
   environment.systemPackages = with pkgs; [
     wget
     git
+    vital
     nixfmt-rfc-style
   ];
 

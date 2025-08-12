@@ -36,12 +36,12 @@
   xdg.configFile."ghostty/themes/Catppuccin-Mocha".text = ''
     # Catppuccin Mocha theme for Ghostty
     # Created: 2025-07-19
-    
+
     background = #1E1E2E
     foreground = #CDD6F4
 
     cursor-color = #CBA6F7
-    
+
     selection-background = #585B70
     selection-foreground = #1E1E2E
 

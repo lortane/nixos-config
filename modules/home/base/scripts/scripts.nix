@@ -1,45 +1,57 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   wall-change = pkgs.writeShellScriptBin "wall-change" (builtins.readFile ./scripts/wall-change.sh);
-  wallpaper-picker = pkgs.writeShellScriptBin "wallpaper-picker" (builtins.readFile ./scripts/wallpaper-picker.sh);
-  
+  wallpaper-picker = pkgs.writeShellScriptBin "wallpaper-picker" (
+    builtins.readFile ./scripts/wallpaper-picker.sh
+  );
+
   runbg = pkgs.writeShellScriptBin "runbg" (builtins.readFile ./scripts/runbg.sh);
   music = pkgs.writeShellScriptBin "music" (builtins.readFile ./scripts/music.sh);
   lofi = pkgs.writeScriptBin "lofi" (builtins.readFile ./scripts/lofi.sh);
-  
+
   toggle_blur = pkgs.writeScriptBin "toggle_blur" (builtins.readFile ./scripts/toggle_blur.sh);
-  toggle_oppacity = pkgs.writeScriptBin "toggle_oppacity" (builtins.readFile ./scripts/toggle_oppacity.sh);
-  
+  toggle_oppacity = pkgs.writeScriptBin "toggle_oppacity" (
+    builtins.readFile ./scripts/toggle_oppacity.sh
+  );
+
   maxfetch = pkgs.writeScriptBin "maxfetch" (builtins.readFile ./scripts/maxfetch.sh);
-  
+
   compress = pkgs.writeScriptBin "compress" (builtins.readFile ./scripts/compress.sh);
   extract = pkgs.writeScriptBin "extract" (builtins.readFile ./scripts/extract.sh);
-  
-  shutdown-script = pkgs.writeScriptBin "shutdown-script" (builtins.readFile ./scripts/shutdown-script.sh);
-  
+
+  shutdown-script = pkgs.writeScriptBin "shutdown-script" (
+    builtins.readFile ./scripts/shutdown-script.sh
+  );
+
   show-keybinds = pkgs.writeScriptBin "show-keybinds" (builtins.readFile ./scripts/keybinds.sh);
-  
+
   vm-start = pkgs.writeScriptBin "vm-start" (builtins.readFile ./scripts/vm-start.sh);
 
   ascii = pkgs.writeScriptBin "ascii" (builtins.readFile ./scripts/ascii.sh);
-  
+
   record = pkgs.writeScriptBin "record" (builtins.readFile ./scripts/record.sh);
 
-  switch-audio-output = pkgs.writeShellScriptBin "switch-audio-output" (builtins.readFile ./scripts/switch-audio-output.sh);
+  switch-audio-output = pkgs.writeShellScriptBin "switch-audio-output" (
+    builtins.readFile ./scripts/switch-audio-output.sh
+  );
   yazi-launcher = pkgs.writeShellScriptBin "yazi-launcher" ''
     #!/bin/sh
     ghostty -e zsh -ic 'y; exit'
   '';
-  fuzzel-switcher = pkgs.writeScriptBin "fuzzel-switcher" (builtins.readFile ./scripts/fuzzel-switcher.sh);
+  fuzzel-switcher = pkgs.writeScriptBin "fuzzel-switcher" (
+    builtins.readFile ./scripts/fuzzel-switcher.sh
+  );
 
-in {
+in
+{
   home.packages = with pkgs; [
     wall-change
     wallpaper-picker
-    
+
     runbg
     music
     lofi
-  
+
     toggle_blur
     toggle_oppacity
 
@@ -49,7 +61,7 @@ in {
     extract
 
     shutdown-script
-    
+
     show-keybinds
 
     vm-start

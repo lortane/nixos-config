@@ -1,4 +1,11 @@
-{ hostname, config, pkgs, host, lib, ...}: 
+{
+  hostname,
+  config,
+  pkgs,
+  host,
+  lib,
+  ...
+}:
 {
   programs.zsh = {
     enable = true;
@@ -23,7 +30,7 @@
 
       # Create a short alias to call the function
       alias y="ycd"
-      
+
       DISABLE_MAGIC_FUNCTIONS=true
       export "MICRO_TRUECOLOR=1"
     '';
@@ -41,7 +48,7 @@
       findw = "grep -rl";
       open = "xdg-open";
 
-      l = "eza --icons  -a --group-directories-first -1"; #EZA_ICON_SPACING=2
+      l = "eza --icons  -a --group-directories-first -1"; # EZA_ICON_SPACING=2
       ls = "eza --icons  -a --group-directories-first -1 --no-user --long";
       ll = "eza --icons  -a --group-directories-first -1 --no-user --long";
       tree = "eza --icons --tree --group-directories-first";
@@ -56,7 +63,7 @@
       nix-clean = "sudo nix-collect-garbage && sudo nix-collect-garbage -d && sudo rm /nix/var/nix/gcroots/auto/* && nix-collect-garbage && nix-collect-garbage -d";
     };
   };
-  
+
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
