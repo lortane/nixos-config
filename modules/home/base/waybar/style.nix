@@ -1,15 +1,16 @@
 { ... }:
-let custom = {
+let
+  custom = {
     font = "JetBrainsMono Nerd Font";
-    font_size = "15px";
+    font_size = "14px";
     font_weight = "bold";
     text_color = "#cdd6f4";
-    secondary_accent= "89b4fa";
+    secondary_accent = "89b4fa";
     tertiary_accent = "f5f5f5";
     background = "11111B";
     opacity = "0.98";
-};
-in 
+  };
+in
 {
   programs.waybar.style = ''
 
@@ -29,9 +30,8 @@ in
     }
 
     #workspaces {
-        font-size: 18px;
-        padding-left: 15px;
-        
+        font-size: 17px;
+        padding-left: 15px;        
     }
     #workspaces button {
         color: ${custom.text_color};
@@ -51,17 +51,9 @@ in
     }
 
     #cpu {
-        padding-left: 15px;
+        padding-left: 9px;
         padding-right: 9px;
         margin-left: 7px;
-    }
-    #memory {
-        padding-left: 9px;
-        padding-right: 9px;
-    }
-    #disk {
-        padding-left: 9px;
-        padding-right: 15px;
     }
 
     #tray {
@@ -70,8 +62,8 @@ in
     }
 
     #pulseaudio {
-        padding-left: 15px;
-        padding-right: 9px;
+        padding-left: 12px;
+        padding-right: 15px;
         margin-left: 7px;
     }
     #battery {
@@ -80,24 +72,16 @@ in
     }
     #network {
         padding-left: 9px;
-        padding-right: 30px;
+        padding-right: 12px;
     }
 
     custom-notification {
         padding-left: 20px;
         padding-right: 20px;
     }
-    
+
     #clock {
         padding-left: 9px;
-        padding-right: 15px;
-    }
-
-    #custom-launcher {
-        font-size: 20px;
-        color: #b4befe;
-        font-weight: ${custom.font_weight};
-        padding-left: 10px;
         padding-right: 15px;
     }
   '';
