@@ -1,4 +1,4 @@
-{ pkgs, ... }: 
+{ pkgs, ... }:
 {
   programs.vscode = {
     enable = true;
@@ -6,7 +6,7 @@
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
         # nix language
-        bbenoist.nix
+        jnoortheen.nix-ide
 
         # color theme
         catppuccin.catppuccin-vsc
@@ -61,7 +61,7 @@
           command = "workbench.action.files.saveFiles";
         }
         {
-          key =  "ctrl+t";
+          key = "ctrl+t";
           command = "workbench.action.tasks.runTask";
         }
       ];
