@@ -1,4 +1,10 @@
-{ pkgs, inputs, username, host, ...}:
+{
+  pkgs,
+  inputs,
+  username,
+  host,
+  ...
+}:
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
   home-manager = {
@@ -6,9 +12,12 @@
     useGlobalPkgs = true;
     extraSpecialArgs = { inherit inputs username host; };
     users.${username} = {
-      imports = 
+      imports =
         if (host == "desktop") then
-          [ ../home/base ../home/desktop ]
+          [
+            ../home/base
+            ../home/desktop
+          ]
         else
           [ ../home/base ];
       home.username = "${username}";
@@ -21,7 +30,11 @@
   users.users.${username} = {
     isNormalUser = true;
     description = "${username}";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "openrazer"
+    ];
     shell = pkgs.zsh;
   };
   nix.settings.allowed-users = [ "${username}" ];
