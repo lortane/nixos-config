@@ -109,11 +109,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1755274400,
-        "narHash": "sha256-rTInmnp/xYrfcMZyFMH3kc8oko5zYfxsowaLv1LVobY=",
+        "lastModified": 1755471983,
+        "narHash": "sha256-axUoWcm4cNQ36jOlnkD9D40LTfSQgk8ExfHSRm3rTtg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ad7196ae55c295f53a7d1ec39e4a06d922f3b899",
+        "rev": "48f4c982de68d966421d2b6f1ddbeb6227cc5ceb",
         "type": "github"
       },
       "original": {
@@ -210,15 +210,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1755412424,
-        "narHash": "sha256-WqiMLPAc31jKLMHVr9d2xciD+mLkBSlVW6v84HSuGYA=",
-        "path": "/home/lortane/dev/vital-pkg",
+        "path": "./packages/vital",
         "type": "path"
       },
       "original": {
-        "path": "/home/lortane/dev/vital-pkg",
+        "path": "./packages/vital",
         "type": "path"
-      }
+      },
+      "parent": []
     },
     "yazi-flavors": {
       "inputs": {

@@ -24,7 +24,7 @@
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
     yazi-flavors.url = "github:aguirre-matteo/nix-yazi-flavors";
     vital-pkg = {
-      url = "path:/home/lortane/dev/vital-pkg";
+      url = "path:./packages/vital";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
