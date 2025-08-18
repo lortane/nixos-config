@@ -6,7 +6,6 @@
   ...
 }:
 {
-  # imports = [ inputs.nix-gaming.nixosModules.default ];
   nix = {
     settings = {
       auto-optimise-store = true;
@@ -26,7 +25,6 @@
   };
   nixpkgs = {
     overlays = [
-      inputs.nur.overlays.default
       inputs.yazi-flavors.overlay
       (final: prev: {
         vital = prev.callPackage inputs.vital-pkg { };

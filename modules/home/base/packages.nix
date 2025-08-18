@@ -5,6 +5,7 @@
     [
       bitwise # cli tool for bit / hex manipulation
       cliphist # clipboard manager
+      drawio
       eza
       fd # find replacement
       ffmpeg

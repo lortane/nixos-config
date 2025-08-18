@@ -33,7 +33,6 @@
       active-only = false;
       disable-scroll = true;
       format = "{icon}";
-      on-click = "activate";
       format-icons = {
         default = "";
         "1" = "";
@@ -73,7 +72,7 @@
       };
       scroll-step = 5;
       on-click = "pamixer -t";
-      on-click-right = "pavucontrol &";
+      on-click-right = "switch-audio-output";
     };
     battery = {
       format = "{icon} {capacity}%";
