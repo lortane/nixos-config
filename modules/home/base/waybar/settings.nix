@@ -25,8 +25,8 @@
         };
       };
       format = "{:%H:%M}";
-      tooltip = "true";
-      tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+      tooltip = true;
+      tooltip-format = "<tt>{calendar}</tt>";
       format-alt = "{:%A %d %B %Y}";
     };
     "hyprland/workspaces" = {
@@ -51,6 +51,7 @@
     cpu = {
       format = "  {usage}%";
       format-alt = "  {avg_frequency} GHz";
+      tooltip = false;
       interval = 2;
     };
     network = {
