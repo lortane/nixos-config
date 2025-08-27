@@ -24,6 +24,7 @@
     ./swaync/swaync.nix
     ./starship.nix
     ./vscodium.nix
+    ./walker.nix
     ./waybar
     ./yazi.nix
     ./zsh.nix
