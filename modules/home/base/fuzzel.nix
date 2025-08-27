@@ -4,17 +4,25 @@
     enable = true;
     settings = {
       main = {
-        font = "JetBrainsMono Nerd Font:weight=bold:size=14";
-        line-height = 25;
-        fields = "name,generic,comment,categories,filename,keywords";
-        terminal = "ghostty";
-        prompt = "' ➜  '";
-        icon-theme = "Papirus-Dark";
-        layer = "top";
-        lines = 10;
+
         width = 35;
+        height = 396;
         horizontal-pad = 25;
         inner-pad = 5;
+        lines = 10;
+        line-height = 25;
+
+        font = "JetBrainsMono Nerd Font:weight=bold:size=14";
+        fields = "name,generic,comment,categories,filename,keywords";
+        terminal = "ghostty";
+        prompt = "'   '";
+        icon-theme = "Papirus-Dark";
+        layer = "top";
+
+        # Behavior
+        exit-on-keyboard-focus-loss = false; # force_keyboard_focus = true
+        hide-scrollbar = true; # Hide scrollbar like Walker
+        dmenu = true;
       };
       colors = {
         background = "1e1e2ecc";
@@ -26,8 +34,25 @@
         border = "b4befeff";
       };
       border = {
-        radius = 15;
-        width = 3;
+        radius = 8;
+        width = 1;
+      };
+
+      # Hide prompt when not needed (like Walker's hidden prompt)
+      dmenu = {
+        prompt = "'   '";
+      };
+
+      # List item styling
+      list = {
+        item-padding = 12;
+        item-margin = 0;
+      };
+
+      # Input field styling
+      input = {
+        padding = 10;
+        margin = 0;
       };
     };
   };

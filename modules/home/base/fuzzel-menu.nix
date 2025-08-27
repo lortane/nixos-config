@@ -16,7 +16,7 @@ let
     text = ''
             # Walker-like behavior implementation
             main_menu() {
-              fuzzel --dmenu --prompt " Search..." <<EOF
+              fuzzel --dmenu <<EOF
       󰀻  Applications
       󰧑  Learning  
         Capture
@@ -29,7 +29,7 @@ let
             
             # Applications submenu (with uwsm integration like Walker)
             app_menu() {
-              fuzzel --dmenu --prompt " Applications..." <<EOF
+              fuzzel --dmenu <<EOF
         Browser (Firefox)
         Terminal (Kitty)
         Files (Nautilus)
@@ -39,7 +39,7 @@ let
             
             # Bookmarks submenu (like Walker's bookmarks)
             bookmarks_menu() {
-              fuzzel --dmenu --prompt " Bookmarks..." <<EOF
+              fuzzel --dmenu <<EOF
         Omarchy - Github
         Omarchy Manual
       EOF
@@ -47,7 +47,7 @@ let
             
             # System submenu
             system_menu() {
-              fuzzel --dmenu --prompt " System..." <<EOF
+              fuzzel --dmenu <<EOF
         Shutdown
         Reboot
         Sleep
@@ -88,16 +88,6 @@ let
                 grim -g "$(slurp)" - | wl-copy && notify-send "Screenshot" "Copied to clipboard" 
                 ;;
               
-              *Calculator*)
-                # Calculator functionality with = prefix (like Walker)
-                result=$(fuzzel --dmenu --prompt " Calculator: =" <<< "=")
-                if [[ "$result" == =* ]]; then
-                  calculation=''${result#=}
-                  answer=$(echo "$calculation" | bc -l 2>/dev/null) || answer="Error"
-                  notify-send "Calculator" "$calculation = $answer"
-                fi
-                ;;
-              
               *Finder*)
                 # File finder functionality with . prefix (like Walker)
                 file=$(find ~/ -type f 2>/dev/null | head -50 | fuzzel --dmenu --prompt " Find file: ")
@@ -114,37 +104,37 @@ let
 in
 {
   # Fuzzel visual configuration (your styling)
-  programs.fuzzel = {
-    enable = true;
-    settings = {
-      main = {
-        font = "JetBrainsMono Nerd Font:weight=bold:size=14";
-        line-height = 25;
-        fields = "name,generic,comment,categories,filename,keywords";
-        terminal = "ghostty";
-        prompt = "' ➜  '";
-        icon-theme = "Papirus-Dark";
-        layer = "top";
-        lines = 10;
-        width = 35;
-        horizontal-pad = 25;
-        inner-pad = 5;
-      };
-      colors = {
-        background = "1e1e2ecc";
-        text = "cdd6f4ff";
-        match = "f38ba8ff";
-        selection = "b4befeaa";
-        selection-match = "f38ba8ff";
-        selection-text = "cdd6f4ff";
-        border = "b4befeff";
-      };
-      border = {
-        radius = 15;
-        width = 3;
-      };
-    };
-  };
+  # programs.fuzzel = {
+  #   enable = true;
+  #   settings = {
+  #     main = {
+  #       font = "JetBrainsMono Nerd Font:weight=bold:size=14";
+  #       line-height = 25;
+  #       fields = "name,generic,comment,categories,filename,keywords";
+  #       terminal = "ghostty";
+  #       prompt = "' ➜  '";
+  #       icon-theme = "Papirus-Dark";
+  #       layer = "top";
+  #       lines = 10;
+  #       width = 35;
+  #       horizontal-pad = 25;
+  #       inner-pad = 5;
+  #     };
+  #     colors = {
+  #       background = "1e1e2ecc";
+  #       text = "cdd6f4ff";
+  #       match = "f38ba8ff";
+  #       selection = "b4befeaa";
+  #       selection-match = "f38ba8ff";
+  #       selection-text = "cdd6f4ff";
+  #       border = "b4befeff";
+  #     };
+  #     border = {
+  #       radius = 15;
+  #       width = 3;
+  #     };
+  #   };
+  # };
 
   # Your custom menu application
   home.packages = [
