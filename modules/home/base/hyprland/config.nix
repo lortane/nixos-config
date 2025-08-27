@@ -127,6 +127,8 @@
         "$mainMod, F1, exec, show-keybinds"
 
         # keybindings
+
+        "$mainMod SHIFT, SPACE, exec, fuzzel-menu"
         "$mainMod, Return, exec, ghostty"
         "$mainMod SHIFT, Return, exec, ghostty --start-as=fullscreen -o 'font_size=16'"
         "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] floorp'"

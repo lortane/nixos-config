@@ -10,6 +10,7 @@
     ./btop.nix
     ./discord.nix
     ./fuzzel.nix
+    ./fuzzel-menu.nix
     ./ghostty.nix
     ./git.nix
     ./gtk.nix
@@ -24,7 +25,6 @@
     ./swaync/swaync.nix
     ./starship.nix
     ./vscodium.nix
-    ./walker.nix
     ./waybar
     ./yazi.nix
     ./zsh.nix

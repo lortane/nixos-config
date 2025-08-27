@@ -41,7 +41,6 @@
       c = "clear";
       cd = "z";
       tt = "gtrash put";
-      cat = "bat";
       code = "codium";
       icat = "kitten icat";
       dsize = "du -hs";
